@@ -3,10 +3,12 @@ import os
 
 
 def requeue(r, st):
-    max_retries = int(os.getenv("Http_X_Max_Retries", "5"))
+    # grab from headers or set defaults.
     retries = int(os.getenv("Http_X_Retries", "0"))
-    delay_duration = int(os.getenv("Http_X_Delay_Duration", "5"))
+    max_retries = int(os.getenv("Http_X_Max_Retries", "15"))
+    delay_duration = int(os.getenv("Http_X_Delay_Duration", "10"))
 
+    # Bump retries up one, since we're on a zero-based index.
     retries = retries + 1
 
     headers = {

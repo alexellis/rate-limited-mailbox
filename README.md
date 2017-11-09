@@ -37,25 +37,28 @@ Deployed.
 URL: http://localhost:8080/function/api
 
 200 OK
-bash-3.2$
 
 
+bash-3.2$ echo test | faas-cli invoke feeder
+None None
+It's OK
+bash-3.2$ echo test | faas-cli invoke feeder
+None None
+It's OK
+bash-3.2$ echo test | faas-cli invoke feeder
+None None
+It's OK
+bash-3.2$ echo test | faas-cli invoke feeder
+None None
+It's OK
+bash-3.2$ echo test | faas-cli invoke feeder
+None None
+It's OK
+```
 
-bash-3.2$ echo test | faas-cli invoke feeder
-None None
-It's OK
-bash-3.2$ echo test | faas-cli invoke feeder
-None None
-It's OK
-bash-3.2$ echo test | faas-cli invoke feeder
-None None
-It's OK
-bash-3.2$ echo test | faas-cli invoke feeder
-None None
-It's OK
-bash-3.2$ echo test | faas-cli invoke feeder
-None None
-It's OK
+You'll then hit the rate limit:
+
+```
 bash-3.2$ echo test | faas-cli invoke feeder
 None None
 Not OK: "FAIL
@@ -93,3 +96,8 @@ bash-3.2$ echo -n reset | faas-cli invoke api
 OK
 ```
 
+You can create many requests like this:
+
+```
+for x in {0..25} ; do echo test | faas-cli invoke feeder ; done
+```
