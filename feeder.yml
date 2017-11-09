@@ -1,0 +1,17 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  feeder:
+    lang: python
+    handler: ./feeder
+    image: feeder
+    environment:
+      write_debug: true
+  api:
+    lang: go
+    handler: ./api
+    image: api
+    environment:
+      write_debug: true
