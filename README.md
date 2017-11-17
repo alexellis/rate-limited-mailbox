@@ -5,7 +5,7 @@
 
 ```
 docker service rm mailbox
-docker service create --network=func_functions --name mailbox --env gateway_url=http://gateway:8080  alexellis2/mailbox:latest
+docker service create --network=func_functions --name mailbox --env gateway_url=http://gateway:8080  alexellis2/mailbox:0.2.2
 docker service logs -f mailbox
 ```
 
@@ -101,3 +101,7 @@ You can create many requests like this:
 ```
 for x in {0..25} ; do echo test | faas-cli invoke feeder ; done
 ```
+
+## Monitoring and metrics
+
+Monitoring is available through Prometheus metrics on the /metrics endpoint.
